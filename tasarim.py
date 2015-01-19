@@ -85,6 +85,9 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         QtCore.QObject.connect(self.Temizle, QtCore.SIGNAL(_fromUtf8("pressed()")), self.label_6.clear)
+#-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*        
+        QtCore.QObject.connect(self.hesapla_butonu, QtCore.SIGNAL(_fromUtf8("pressed()")), self.hesapYap)
+#-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*        
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -98,7 +101,20 @@ class Ui_Form(object):
         self.label_5.setText(_translate("Form", "Sayıların Ortalamasını Alan Program :", None))
         self.label_6.setText(_translate("Form", "Bu Yazıyı Temizlemek istiyorsan Temizle butonuna bas", None))
         self.Temizle.setText(_translate("Form", "Temizle", None))
-
+        
+#-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+    def hesapYap(self):
+        ortalama = 0
+        try:
+            sayi1 = int(self.birinci_sayi.text())
+            sayi2 = int(self.ikinci_sayi.text())
+            sayi3 = int(self.ucuncu_sayi.text())
+            ortalama = (sayi1 + sayi2 + sayi3)/3
+        except:
+            self.sonuc.setText('<span style="color:red;font-weight:bold">Tam sayi giriniz!</span>')
+            return
+        self.sonuc.setText('<span style="color:red;font-weight:bold">%0.2f</span>' % ortalama)
+#-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 if __name__ == "__main__":
     import sys
